@@ -60,4 +60,9 @@ public class Album {
     public int getRatings() {
         return ratings;
     }
+
+    public void changeTitle(String newTitle) {
+        title = newTitle;
+
+    }
 }
