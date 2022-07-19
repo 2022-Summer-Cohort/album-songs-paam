@@ -1,0 +1,29 @@
+### Get all albums
+Send Request
+GET http://http://localhost:8080/api/albums
+Accept: application/json
+
+### Get an album with the given id;
+Send Request
+GET http://http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Delete an album with the given id.
+Send Request
+GET http://http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Post a new album resource.
+Send Request
+GET http://http://localhost:8080/api/albums
+Content-Type: application/json
+
+{"Title": "The White Album", "": ""}
+
+### Update an album resource.
+Send Request
+GET http://http://localhost:8080/api/albums
+Content-Type: application/json
+
+{}
+

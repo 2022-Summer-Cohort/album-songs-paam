@@ -1,4 +1,4 @@
-package org.wcci.apimastery.model;
+package org.wcci.apimastery.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,5 +59,10 @@ public class Album {
 
     public int getRatings() {
         return ratings;
+    }
+
+    public void changeTitle(String newTitle) {
+        title = newTitle;
+
     }
 }

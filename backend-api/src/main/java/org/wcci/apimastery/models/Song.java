@@ -1,4 +1,6 @@
-package org.wcci.apimastery.model;
+package org.wcci.apimastery.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -15,6 +17,7 @@ public class Song {
     private int ratings;
 
     @ManyToOne
+    @JsonIgnore
     private Album album;
 
     public Song(String title, String link, String duration, String comment, int ratings, Album album) {
@@ -28,6 +31,8 @@ public class Song {
 
     public Song() {
     }
+    public void changeAlbum (Album newAlbum) {}
+    Album = newAlbum;
 
     public Long getId() {
         return id;
