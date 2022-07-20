@@ -32,7 +32,8 @@ public class Song {
     public Song() {
     }
     public void changeAlbum (Album newAlbum) {
-    Album album= newAlbum;}
+        album = newAlbum;
+    }
 
     public Long getId() {
         return id;

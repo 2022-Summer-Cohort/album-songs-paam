@@ -43,7 +43,7 @@ public class AlbumController {
             Album albumToChange = albumRepo.findById(albumToEdit.getId()).get();
             ArrayList<Song> songs = (ArrayList)albumToChange.getSongs();
             for (int i = 0; i < songs.size();i++) {
-                songs.changeAlbum(albumToEdit);
+                songs.get(i).changeAlbum(albumToEdit);
                 songRepo.save(songs.get(i));
             }
         }
