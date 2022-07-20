@@ -1,0 +1,16 @@
+.main-header{
+    justify-content: center;
+    text-align: center;
+    background-color:bisque;
+    font-size: 2rem;
+}
+
+.album-library{
+    display: flex;
+    justify-content: space-around;
+}
+.album {
+    background-color:darkgray;
+}
+
+
