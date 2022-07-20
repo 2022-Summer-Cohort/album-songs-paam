@@ -15,7 +15,7 @@ public class Album {
     private Long id;
     private String title;
     private String imgUrl;
-    @OneToMany(mappedBy = "songs")
+    @OneToMany(mappedBy = "album")
     private Collection<Song> songs;
     private String recordLabel;
     private String comments;
