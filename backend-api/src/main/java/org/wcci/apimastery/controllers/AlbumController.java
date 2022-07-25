@@ -8,7 +8,6 @@ import org.wcci.apimastery.repos.AlbumRepository;
 import org.wcci.apimastery.repos.SongRepository;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 @RestController
 @RequestMapping()
@@ -63,5 +62,19 @@ public class AlbumController {
         albumToChange.changeTitle(newTitle);
         albumRepo.save(albumToChange);
         return albumToChange;
+    }
+
+    @DeleteMapping("/api/albums/{id}")
+    public Iterable<Album> deleteAlbumById(@PathVariable Long id) {
+        albumRepo.deleteById(id);
+        return albumRepo.findAll();
+    }
+
+    @PatchMapping("/api/albums/{id}")
+    public Iterable<Album> changeTitle(@PathVariable Long id, @RequestBody String title) {
+        Album album = albumRepo.findById(id).get();
+        album.changeTitle(title);
+        albumRepo.save(album);
+        return albumRepo.findAll();
     }
 }

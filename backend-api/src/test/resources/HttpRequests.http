@@ -38,3 +38,10 @@ Content-Type: application/json
 
 {"title": "Self Made","link": "https://open.spotify.com/track/3Uvi9diL18dYSUc3vcKk0n?si=c8b2e1d72d1f4d4d","duration": "3:01","comment": "shkdjfysahgdufija bsdf","ratings": "2","Album:" "Jworld"}
 
+### Changes album techstack
+PATCH http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Delete an album with the given id.
+DELETE http://localhost:8080/api/albums/1
+Content-Type: application/json

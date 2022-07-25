@@ -1,9 +1,6 @@
 package org.wcci.apimastery.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
@@ -15,7 +12,7 @@ public class Album {
     private Long id;
     private String title;
     private String imgUrl;
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Song> songs;
     private String recordLabel;
     private String comments;
@@ -65,4 +62,8 @@ public class Album {
         title = newTitle;
 
     }
+    public void changeRecordLabel(String newRecordLabel) {
+        recordLabel = newRecordLabel;
+    }
+
 }
