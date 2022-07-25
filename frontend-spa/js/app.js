@@ -1,8 +1,7 @@
 import home from "./home.js";
 import header from "./header.js";
 import footer from "./footer.js";
-import albumView from "../albumView.js";
-
+import albumView from "./albumView.js";
 const container = document.querySelector(".container");
 
 // function makeHomeView() {
@@ -44,15 +43,17 @@ function makeHomeViewFromJSON(albums) {
     container.innerHTML += home(albums);
     container.innerHTML += footer();
 
-    const albumEl = container.querySelector(".album");
+    const albumsEl = container.querySelectorAll(".album");
 
-    albumEl.forEach(album => {
+    albumsEl.forEach(album => {
         let albumElId = album.querySelector(".id_field");
         const albumH2 = album.querySelector(".album-title");
         albumH2.addEventListener("click", ()=> {
-            albums.forEach(albumJson => {
-                makeAlbumView(albumJson)
-            })
+            fetch(`http://localhost:8080/api/albums/${albumElId.value}`)
+            .then(res => res.json())
+            .then(albumsJson => {
+                makeAlbumView(albumsJson);
+            })    
         })
         
         const deleteButton = album.querySelector(".delete-button");
@@ -110,7 +111,7 @@ function makeAlbumView(album) {
         const addSongButton = container.querySelector(".addSongButton");
 
         addSongButton.addEventListener("click",()=>{
-            let albumElId = container.querySelector(".id-field");
+            // let albumElId = container.querySelector(".id-field");
             // const album = container.querySelector();
             const newSongJson = {
                 "title": songNameIn.value,
@@ -119,7 +120,7 @@ function makeAlbumView(album) {
             fetch(`http://localhost:8080/api/albums/${album.id}/addSong`,{
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/ json'
+                    'Content-type': 'application/json'
                 },
                 body: JSON.stringify(newSongJson)
             })

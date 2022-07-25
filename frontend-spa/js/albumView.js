@@ -23,6 +23,7 @@ export default function albumView(album) {
                     <input type="text" placeholder="Song Description" class="songDescriptionInput" \>
 
                     <button class="addSongButton">Add Song</button>
+                    <button class="delete-button">Delete</button>
                 </div>
 
                 <a class="back-navigation">back to album listings</a>
