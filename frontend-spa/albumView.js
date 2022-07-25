@@ -3,8 +3,8 @@ export default function albumView(album) {
         <main class="main-content">
             <section class="album-library">
                 <header class="album-library-header">
-                    <h2 class="album-library-header-???">${album.title}</h2>
-                    <h3 class="album-library-header-???">${album.techStack}</h3>
+                    <h2 class="album-library-header-title">${album.title}</h2>
+                    <h3 class="album-library-header-recordLabel">${album.recordLabel}</h3>
                 </header>    
                 <section class="album-songs">
                     ${
@@ -12,7 +12,7 @@ export default function albumView(album) {
                             return `
                                 <div class="song">
                                     <h3 class="song-title">${song.title}</h3>
-                                    <input type="hidden" class="sum_field" value="${song.summary}">
+                                    <input type="hidden" class="sum_field" value="${song.link}">
                                 </div>    
                             `
                         }).join("")
