@@ -4,7 +4,7 @@ export default function albumView(album) {
             <section class="album-library">
                 <header class="album-library-header">
                     <h2 class="album-library-header-???">${album.title}</h2>
-                    <h3 class="album-library-header-???">${album.techStack}</h3>
+                    <h3 class="album-library-header-???">${album.recordLabel}</h3>
                 </header>    
                 <section class="album-songs">
                     ${
