@@ -1,9 +1,14 @@
 export default function home(albums) {
-    return`
+    return `
     <main class="main-content">
     <section class="album-library">
+    
+    <div class="addAlbumDiv">
+    <button class="addAlbum-button">Add Album</button>
+    </div>
+
         ${albums.map(album => {
-            return `
+        return `
             <div class="album">
                 <h2 class="album-title">${album.title}</h2>
                 <input type="hidden" class="id_field" value="${album.id}">
@@ -16,8 +21,10 @@ export default function home(albums) {
                 <button class="delete-button">Delete</button>
             </div>
             `
-        }) .join("")
-    }
+    }).join("")
+        }
+    
+
 
     </section>
     </main>

@@ -2,6 +2,7 @@ import home from "./home.js";
 import header from "./header.js";
 import footer from "./footer.js";
 import albumView from "./albumView.js";
+import addAlbum from "./addAlbum.js";
 const container = document.querySelector(".container");
 
 // function makeHomeView() {
@@ -43,7 +44,6 @@ function makeHomeViewFromJSON(albums) {
     container.innerHTML += footer();
 
     const albumsEl = container.querySelectorAll(".album");
-
     albumsEl.forEach(album => {
         let albumElId = album.querySelector(".id_field");
         const albumH2 = album.querySelector(".album-title");
@@ -79,9 +79,53 @@ function makeHomeViewFromJSON(albums) {
             })
 
         })
-    });
+    })
+
+    const addAlbumButton = container.querySelector(".addAlbum-button")
+    addAlbumButton.addEventListener("click", ()=>{
+        makeAddAlbumView(albums)
+    })
 }
 
+
+function makeAddAlbumView(){
+    container.innerHTML = header();
+    container.innerHTML+=addAlbum();
+    container.innerHTML += footer();
+
+    const addAlbumButton = container.querySelector(".add-button")
+    const albumTitle = container.querySelector(".albumTitle-input")
+    const albumImgUrl = container.querySelector(".imgUrl-input")
+    const albumRecordLabel = container.querySelector(".recordLabel-input")
+    const albumComments = container.querySelector(".comments-input")
+    const albumRatings = container.querySelector(".ratings-input")
+
+    addAlbumButton.addEventListener("click", () => {
+        const newAlbumJson = {
+            "title":albumTitle.value,
+            "imgUrl":albumImgUrl.value,
+            "recordLabel":albumRecordLabel.value,
+            "comments":albumComments.value,
+            "ratings":albumRatings.value,
+        }
+        fetch(`http://localhost:8080/api/albums`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+        .then(res => res.json())
+        .then(album => {
+            makeHomeViewFromJSON(album)
+        })
+    })
+
+    const backButton = document.querySelector(".back-navigation");
+    backButton.addEventListener("click",()=>{
+        makeHomeView();
+    })
+}
 
 function makeAlbumView(album) {
         console.log(album);
@@ -109,7 +153,6 @@ function makeAlbumView(album) {
     
             })
 
-            
             const deleteSongButton = song.querySelector(".delete-button");
             deleteSongButton.addEventListener("click", ()=> {
                 fetch(`http://localhost:8080/api/songs/${songElId.value}/deleteSong`, {
