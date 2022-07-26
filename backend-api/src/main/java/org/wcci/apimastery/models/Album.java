@@ -60,7 +60,9 @@ public class Album {
 
     public void changeTitle(String newTitle) {
         title = newTitle;
-
+    }
+    public void deleteOneSong(Song song) {
+        songs.remove(song);
     }
     public void changeRecordLabel(String newRecordLabel) {
         recordLabel = newRecordLabel;

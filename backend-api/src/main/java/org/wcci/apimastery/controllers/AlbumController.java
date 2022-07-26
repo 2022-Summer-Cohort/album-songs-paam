@@ -29,11 +29,29 @@ public class AlbumController {
     public Album retrieveAlbumById(@PathVariable Long id) {
         return albumRepo.findById(id).get();
     }
+
     @PostMapping("/api/albums/{id}/addSong")
     public Album addSongToAlbum(@PathVariable Long id, @RequestBody Song song) {
         Album album = albumRepo.findById(id).get();
         song.setAlbum(album);
         songRepo.save(song);
+        return album;
+    }
+
+    @DeleteMapping("/api/songs/{id}/deleteSong")
+    public Album deleteSongFromAlbum(@PathVariable Long id) {
+        Song song = songRepo.findById(id).get();
+        Album album = song.getAlbum();
+        songRepo.deleteById(id);
+        return album;
+    }
+
+
+    @PatchMapping("/api/songs/{id}/editSong")
+    public Album editSongInAlbum(@PathVariable Long id, @RequestBody String title) {
+        Song song = songRepo.findById(id).get();
+        Album album = song.getAlbum();
+        song.changeTitle(title);
         return album;
     }
 
@@ -56,13 +74,13 @@ public class AlbumController {
         return albumRepo.findAll();
     }
 
-    @PatchMapping("/api/albums/{id}/title")
-    public Album albumToChangeTitle(@RequestBody String newTitle, @PathVariable Long id) {
-        Album albumToChange = albumRepo.findById(id).get();
-        albumToChange.changeTitle(newTitle);
-        albumRepo.save(albumToChange);
-        return albumToChange;
-    }
+//    @PatchMapping("/api/albums/{id}/title")
+//    public Album albumToChangeTitle(@RequestBody String newTitle, @PathVariable Long id) {
+//        Album albumToChange = albumRepo.findById(id).get();
+//        albumToChange.changeTitle(newTitle);
+//        albumRepo.save(albumToChange);
+//        return albumToChange;
+//    }
 
     @DeleteMapping("/api/albums/{id}")
     public Iterable<Album> deleteAlbumById(@PathVariable Long id) {
@@ -72,6 +90,10 @@ public class AlbumController {
 
     @PatchMapping("/api/albums/{id}")
     public Iterable<Album> changeTitle(@PathVariable Long id, @RequestBody String title) {
+        if (title.isEmpty()) {
+            String tempName = albumRepo.findById(id).get().getTitle();
+            title = tempName;
+        }
         Album album = albumRepo.findById(id).get();
         album.changeTitle(title);
         albumRepo.save(album);

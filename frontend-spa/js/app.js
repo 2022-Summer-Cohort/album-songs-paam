@@ -38,7 +38,6 @@ function makeHomeView() {
 }
 
 function makeHomeViewFromJSON(albums) {
-    console.log();
     container.innerHTML = header();
     container.innerHTML += home(albums);
     container.innerHTML += footer();
@@ -91,11 +90,35 @@ function makeAlbumView(album) {
         container.innerHTML += footer();
 
         const songElement = document.querySelectorAll(".song");
+        console.log(songElement)
 
         songElement.forEach(song=>{
-            song.addEventListener("click", ()=>{
-                let songSum = song.querySelector(".sum_field");
-                alert(songSum.value);
+            let songElId = song.querySelector(".id_field");
+
+            const editButton = song.querySelector(".edit-button");
+            editButton.addEventListener("click", ()=> {
+                const updateInput = song.querySelector(".update-songName");
+                fetch(`http://localhost:8080/api/songs/${songElId.value}/editSong`, {
+                    method: 'PATCH',
+                    body: updateInput.value
+                })
+                .then(res => res.json())
+                .then(album => {
+                    makeAlbumView(album);
+                })
+    
+            })
+
+            
+            const deleteSongButton = song.querySelector(".delete-button");
+            deleteSongButton.addEventListener("click", ()=> {
+                fetch(`http://localhost:8080/api/songs/${songElId.value}/deleteSong`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(album => {
+                    makeAlbumView(album);
+                })
             });
         }) 
 
@@ -104,8 +127,6 @@ function makeAlbumView(album) {
             makeHomeView();
         })
 
-    
-    
         const songNameIn = container.querySelector(".songNameInput");
         const songSumIn = container.querySelector(".songDescriptionInput");
         const addSongButton = container.querySelector(".addSongButton");

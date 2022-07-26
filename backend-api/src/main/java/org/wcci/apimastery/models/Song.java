@@ -62,7 +62,9 @@ public class Song {
     public Album getAlbum() {
         return album;
     }
-
+    public void changeTitle(String newTitle) {
+        title = newTitle;
+    }
     public void setAlbum(Album album) {
         this.album = album;
     }
