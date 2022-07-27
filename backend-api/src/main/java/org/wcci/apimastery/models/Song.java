@@ -3,6 +3,8 @@ package org.wcci.apimastery.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Song {
@@ -13,23 +15,34 @@ public class Song {
     private String title;
     private String link;
     private String duration;
-    private String comment;
+
     private int ratings;
+
+    @ElementCollection
+    private Collection<Comment> comments;
 
     @ManyToOne
     @JsonIgnore
     private Album album;
 
-    public Song(String title, String link, String duration, String comment, int ratings, Album album) {
+    public Song(String title, String link, String duration, int ratings, Album album) {
         this.title = title;
         this.link = link;
         this.duration = duration;
-        this.comment = comment;
+        this.comments = new ArrayList<>();
         this.ratings = ratings;
         this.album = album;
     }
 
     public Song() {
+    }
+
+    public Collection<Comment>getComments() {
+        return comments;
+    }
+
+    public void addComment(Comment comment){
+        comments.add(comment);
     }
     public void changeAlbum (Album newAlbum) {
         album = newAlbum;
@@ -51,9 +64,6 @@ public class Song {
         return duration;
     }
 
-    public String getComment() {
-        return comment;
-    }
 
     public int getRatings() {
         return ratings;

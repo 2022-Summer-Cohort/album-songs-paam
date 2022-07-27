@@ -97,7 +97,6 @@ function makeAddAlbumView(){
     const albumTitle = container.querySelector(".albumTitle-input")
     const albumImgUrl = container.querySelector(".imgUrl-input")
     const albumRecordLabel = container.querySelector(".recordLabel-input")
-    const albumComments = container.querySelector(".comments-input")
     const albumRatings = container.querySelector(".ratings-input")
 
     addAlbumButton.addEventListener("click", () => {
@@ -105,7 +104,6 @@ function makeAddAlbumView(){
             "title":albumTitle.value,
             "imgUrl":albumImgUrl.value,
             "recordLabel":albumRecordLabel.value,
-            "comments":albumComments.value,
             "ratings":albumRatings.value,
         }
         fetch(`http://localhost:8080/api/albums`, {
@@ -194,6 +192,36 @@ function makeAlbumView(album) {
             })
         })
 
+
+        const userNameIn = container.querySelector(".userNameInput");
+        const commentIn = container.querySelector(".commentInput");
+        const addCommentButton = container.querySelector(".addCommentButton");
+
+        addCommentButton.addEventListener("click",()=>{
+            // let albumElId = container.querySelector(".id-field");
+            // const album = container.querySelector();
+            const newCommentJson = {
+                "userName": userNameIn.value,
+                "comment": commentIn.value,
+            }
+            fetch(`http://localhost:8080/api/albums/${album.id}/addComment`,{
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(newCommentJson)
+            })
+            .then(res => res.json())
+            .then(album => {
+                makeAlbumView(album);
+            })
+        })
+
 }
 
 makeHomeView();
+fetch("http://localhost:8080/api/albums/1")
+.then(res => res.json())
+.then(album => {
+    console.log(album.songs[0].ratings);
+})

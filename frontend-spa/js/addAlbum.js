@@ -10,8 +10,6 @@ export default function addAlbum(album) {
     <input type="text" class="recordLabel-input" placeholder="Record Label">                
     <p class ="title">Record Label</p>
 
-    <input type="text" class="comments-input" placeholder="Comments">                
-    <p class ="title">Comments</p>
 
     <input type="text" class="ratings-input" placeholder="Ratings">                
     <p class ="title">Ratings</p>

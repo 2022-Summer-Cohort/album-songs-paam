@@ -7,9 +7,8 @@ export default function albumView(album) {
                     <h3 class="album-library-header-???">${album.recordLabel}</h3>
                 </header>    
                 <section class="album-songs">
-                    ${
-                        album.songs.map(song => {
-                            return `
+                    ${album.songs.map(song => {
+        return `
                                 <div class="song">
                                     <h3 class="song-title">${song.title}</h3>
                                     <input type="hidden" class="id_field" value="${song.id}">
@@ -20,14 +19,35 @@ export default function albumView(album) {
 
                                     </div>    
                             `
-                        }).join("")
-                    }
+    }).join("")
+        }
                 </section>
+
+                <section class="album-comments">
+                ${album.comments.map(comment => {
+            return `
+                            <div class="comment">
+                                <h3 class="userName">${comment.userName}</h3>         
+                                <h3 class="commentVals">${comment.comment}</h3>         
+                                </div>    
+                        `
+        }).join("")
+        }
+                </section>
+
+
                 <div class="NewSongDiv">
                     <input type="text" placeholder="Song Name" class="songNameInput" \>
                     <input type="text" placeholder="Song Description" class="songDescriptionInput" \>
 
                     <button class="addSongButton">Add Song</button>
+                </div>
+
+                <div class="addComment">
+                <input type="text" placeholder="User Name" class="userNameInput" \>
+                <input type="text" placeholder="Comment" class="commentInput" \>
+
+                <button class="addCommentButton">Add Comment</button>
                 </div>
 
                 <a class="back-navigation">back to album listings</a>

@@ -1,6 +1,8 @@
 package org.wcci.apimastery.models;
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -15,19 +17,29 @@ public class Album {
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Song> songs;
     private String recordLabel;
-    private String comments;
     private int ratings;
 
-    public Album(String title, String imgUrl, String recordLabel, String comments, int ratings, Song...songs) {
+    @ElementCollection
+    private Collection<Comment> comments;
+
+    public Album(String title, String imgUrl, String recordLabel, int ratings, Song...songs) {
         this.title = title;
         this.imgUrl = imgUrl;
         this.songs = Set.of(songs);
         this.recordLabel = recordLabel;
-        this.comments = comments;
+        this.comments = new ArrayList<>();
         this.ratings = ratings;
     }
 
     public Album() {
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void addComment(Comment comment){
+        comments.add(comment);
     }
 
     public Long getId() {
@@ -50,9 +62,6 @@ public class Album {
         return recordLabel;
     }
 
-    public String getComments() {
-        return comments;
-    }
 
     public int getRatings() {
         return ratings;
