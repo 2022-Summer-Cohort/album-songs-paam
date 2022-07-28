@@ -12,10 +12,10 @@ export default function albumView(album) {
                                 <div class="song">
                                     <h3 class="song-title">${song.title}</h3>
                                     <input type="hidden" class="id_field" value="${song.id}">
-                                    <input type="hidden" class="sum_field" value="${song.summary}">
-                                    <button class="delete-button">Delete</button>
+                                    <input type="hidden" class="sum_field" value="${song.summary}">                       
                                     <button class="edit-button">Edit</button>
-                                    <input type="text" class="update-songName" placeholder="New Song Name">                
+                                    <input type="text" class="update-songName" placeholder="New Song Name"> 
+                                    <input type="image" src="/frontend-spa/images/trashTransp.png" height="28" width="30" class="delete-button" \>               
                                     </div>    
                             `
     }).join("")
@@ -26,8 +26,8 @@ export default function albumView(album) {
                 ${album.comments.map(comment => {
             return `
                             <div class="comment">
-                                <h3 class="userName">${comment.userName}</h3>         
-                                <h3 class="commentVals">${comment.comment}</h3>         
+                                <h3 class="userName">Username: ${comment.userName}</h3>         
+                                <h3 class="commentVals">"${comment.comment}"</h3>         
                                 </div>    
                         `
         }).join("")
@@ -39,14 +39,14 @@ export default function albumView(album) {
                     <input type="text" placeholder="Song Name" class="songNameInput" \>
                     <input type="text" placeholder="Song Description" class="songDescriptionInput" \>
 
-                    <button class="addSongButton">Add Song</button>
+                    <input type="image" src="/frontend-spa/images/add-icon-transp.png" height="30" width="30" class="addSongButton" \>
                 </div>
 
                 <div class="addComment">
                 <input type="text" placeholder="User Name" class="userNameInput" \>
                 <input type="text" placeholder="Comment" class="commentInput" \>
 
-                <button class="addCommentButton">Add Comment</button>
+                <input type="image" src="/frontend-spa/images/add-icon-transp.png" height="30" width="30" class="addCommentButton" \>
                 </div>
 
                 <a class="back-navigation">back to album listings</a>

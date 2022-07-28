@@ -1,20 +1,197 @@
 .main-header{
-    justify-content: center;
+    /* background-image: url("/frontend-spa/images/concert-crowd-header.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* justify-content: center; */
     text-align: center;
-    background-color:bisque;
+    background-color: transparent;
     font-size: 2rem;
 }
+.main-content{
+    background-image: url("/frontend-spa/images/concert-crowd.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; /* or contain depending on what you want */
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align:center;
+    margin:auto;
+    padding:0;
+}
+body{
+    display: flex; 
+    background-image: url("/frontend-spa/images/concert-stage.jpg");
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    
+    
+}
 
-.album-library{
+/* .album-library{
     display: flex;
     justify-content: space-around;
-}
+} */
 .album {
-    background-color:darkgray;
+    background-color:rgb(66, 65, 65);
+    justify-content: space-around;
+    display: inline-block;
+    
 }
-
+.addAlbum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.NewSongDiv{
+    background-color:rgb(66, 65, 65);
+    text-align: center;
+    
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border: 3px transparent;
+}
+.addComment{
+    background-color:rgb(66, 65, 65);
+    text-align: center;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border: 3px transparent;
+}
+.back-navigation{
+    text-align: center;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+.songView{
+    text-align: center;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border: 3px transparent;
+}
 img{
     width: 400px;
     height: 400px;
 }
+h1{
+    
+  font-family: "Vibur", sans-serif;
+  
+    color: rgb(255, 255, 255);
+    text-shadow: 
+    0 0 7px #fff,
+    0 0 10px rgb(255, 16, 243),
+    0 0 21px rgb(255, 3, 221),
+    0 0 42px rgb(0, 199, 133),
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+h2{
+    color: aqua;
+}
+h3{
+    color: aqua;
+}
+h4{
+    color: rgb(0, 255, 255);
+    color: rgb(255, 255, 255);
+    text-shadow: 
+    0 0 7px #fff,
+    0 0 10px rgb(255, 16, 243),
+    0 0 21px rgb(255, 3, 221),
+    0 0 42px rgb(0, 199, 133),
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+a{
+    color: rgb(0, 255, 255);
+    color: rgb(255, 255, 255);
+    text-shadow: 
+    0 0 7px #fff,
+    0 0 10px rgb(255, 16, 243),
+    0 0 21px rgb(255, 3, 221),
+    0 0 42px rgb(0, 199, 133),
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+p{
+    color: rgb(0, 255, 255);
+    color: rgb(255, 255, 255);
+    text-shadow: 
+    0 0 7px #fff,
+    0 0 10px rgb(255, 16, 243),
+    0 0 21px rgb(255, 3, 221),
+    0 0 42px rgb(0, 199, 133),
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+
+}
+.add-button{
+    color: rgb(0, 255, 255);
+    background: rgb(57, 57, 58);
+}
+.userName{
+    color: rgb(253, 253, 253);
+}
+.commentVals{
+    color: rgb(0, 255, 255);
+    color: rgb(255, 255, 255);
+    text-shadow: 
+    0 0 7px #fff,
+    0 0 10px rgb(255, 16, 243),
+    0 0 21px rgb(255, 3, 221),
+    0 0 42px rgb(0, 199, 133),
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+footer{
+    text-align: center;
+    font-size: 15pt;
+    padding: 30px;
+    align-items: center;
+    justify-content: center; 
+    background-color: rgb(63, 71, 71);
+    /* opacity: .5; */
+    
+}
+/* footer .icon {
+    display: flex;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center; 
+} */
+.email{
+    color: #13cfcf;
+    font-size: 10pt;
+    text-shadow: 1px 0 0 #000, 0 1px 0 #000, 0 1px 0 #000, 1px 0 0 #000;
+}
+
 

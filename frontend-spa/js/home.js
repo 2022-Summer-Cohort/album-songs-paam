@@ -4,7 +4,8 @@ export default function home(albums) {
     <section class="album-library">
     
     <div class="addAlbumDiv">
-    <button class="addAlbum-button">Add Album</button>
+    <input type="image" src="/frontend-spa/images/add-icon-transp.png" class="addAlbum-button" height="100" width="100">
+    <p>ADD ALBUM</p>
     </div>
 
         ${albums.map(album => {
@@ -18,7 +19,7 @@ export default function home(albums) {
 
                 <input type="text" class="update-recordLabel" placeholder="New record label">                
                 <button class="update-button">Update Record Label</button>
-                <button class="delete-button">Delete</button>
+                <input type="image" src="/frontend-spa/images/trashTransp.png" height="28" width="30" class="delete-button" \>
             </div>
             `
     }).join("")
