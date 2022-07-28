@@ -2,7 +2,7 @@
     background-image: url("/frontend-spa/images/concert-crowd-header.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    /* justify-content: center; */
+    justify-content: center;
     text-align: center;
     background-color: transparent;
     font-size: 2rem;
@@ -11,7 +11,8 @@
     background-image: url("/frontend-spa/images/concert-crowd.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover; /* or contain depending on what you want */
+    /* background-size: cover;  */
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     text-align:center;
@@ -36,9 +37,12 @@ body{
     justify-content: space-around;
 } */
 .album {
-    background-color:rgb(66, 65, 65);
+    background-color:rgb(54, 54, 54);
     justify-content: space-around;
     display: inline-block;
+    margin-left: 1%;
+    margin-right: auto;
+    margin-bottom: 1%;
     
 }
 .addAlbum{
@@ -49,7 +53,7 @@ body{
     margin: auto;
 }
 .NewSongDiv{
-    background-color:rgb(66, 65, 65);
+    background-color:rgb(54, 54, 54);
     text-align: center;
     
     justify-content: center;
@@ -60,7 +64,7 @@ body{
     border: 3px transparent;
 }
 .addComment{
-    background-color:rgb(66, 65, 65);
+    background-color:rgb(54, 54, 54);
     text-align: center;
     justify-content: center;
     display: block;
@@ -101,9 +105,9 @@ h1{
     0 0 21px rgb(255, 3, 221),
     0 0 42px rgb(0, 199, 133),
     0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
+    0 0 92px #0fa;
+    /* 0 0 102px #0fa,
+    0 0 151px #0fa; */
 }
 h2{
     color: rgb(162, 252, 252);
@@ -111,11 +115,11 @@ h2{
     0 0 7px #fff,
     0 0 10px rgb(255, 16, 243),
     0 0 21px rgb(255, 3, 221),
-    0 0 42px rgb(0, 199, 133),
-    0 0 82px #0fa,
+    0 0 4px rgb(0, 199, 133);
+    /* 0 0 82px #0fa,
     0 0 92px #0fa,
     0 0 102px #0fa,
-    0 0 151px #0fa;
+    0 0 151px #0fa; */
 }
 h3{
     color: aqua;
@@ -132,11 +136,11 @@ a{
     0 0 7px #fff,
     0 0 10px rgb(255, 16, 243),
     0 0 21px rgb(255, 3, 221),
-    0 0 42px rgb(0, 199, 133),
-    0 0 82px #0fa,
+    0 0 1px rgb(0, 199, 133);
+    /* 0 0 82px #0fa,
     0 0 92px #0fa,
     0 0 102px #0fa,
-    0 0 151px #0fa;
+    0 0 151px #0fa; */
 }
 p{
     color: rgb(0, 255, 255);
@@ -144,12 +148,12 @@ p{
     text-shadow: 
     0 0 7px #fff,
     0 0 10px rgb(255, 16, 243),
-    0 0 21px rgb(255, 3, 221),
-    0 0 42px rgb(0, 199, 133),
+    0 0 21px rgb(255, 3, 221);
+    /* 0 0 42px rgb(0, 199, 133),
     0 0 82px #0fa,
     0 0 92px #0fa,
     0 0 102px #0fa,
-    0 0 151px #0fa;
+    0 0 151px #0fa; */
 
 }
 .add-button{
@@ -160,7 +164,7 @@ p{
     color: rgb(253, 253, 253);
 }
 .commentVals{
-    color: rgb(0, 255, 255);
+    
     color: rgb(255, 255, 255);
     text-shadow: 
     0 0 7px #fff,
@@ -178,7 +182,7 @@ footer{
     padding: 30px;
     align-items: center;
     justify-content: center; 
-    background-color: rgb(63, 71, 71);
+    background-color:rgb(54, 54, 54);
     /* opacity: .5; */
     
 }
