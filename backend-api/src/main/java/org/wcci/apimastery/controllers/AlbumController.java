@@ -31,6 +31,11 @@ public class AlbumController {
         return albumRepo.findById(id).get();
     }
 
+    @GetMapping("/api/songs/{id}")
+    public Song retrieveSongById(@PathVariable Long id) {
+        return songRepo.findById(id).get();
+    }
+
     @PostMapping("/api/albums/{id}/addSong")
     public Album addSongToAlbum(@PathVariable Long id, @RequestBody Song song) {
         Album album = albumRepo.findById(id).get();
@@ -48,10 +53,17 @@ public class AlbumController {
     }
 
     @PatchMapping("/api/albums/{id}/addComment")
-    public Album addComment(@PathVariable Long id, @RequestBody Comment comment){
+    public Album addCommentToAlbum(@PathVariable Long id, @RequestBody Comment comment){
         Album album = albumRepo.findById(id).get();
         album.addComment(comment);
         return albumRepo.save(album);
+    }
+
+    @PatchMapping("/api/songs/{id}/addComment")
+    public Song addCommentToSong(@PathVariable Long id, @RequestBody Comment comment){
+        Song song = songRepo.findById(id).get();
+        song.addComment(comment);
+        return songRepo.save(song);
     }
 
     @PatchMapping("/api/songs/{id}/editSong")

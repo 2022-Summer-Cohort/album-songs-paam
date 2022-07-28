@@ -1,4 +1,4 @@
-export default function addAlbum(album) {
+export default function addAlbum() {
     return `
 
     <input type="text" class="albumTitle-input" placeholder="Album Title">                

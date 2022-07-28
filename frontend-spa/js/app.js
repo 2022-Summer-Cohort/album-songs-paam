@@ -3,6 +3,7 @@ import header from "./header.js";
 import footer from "./footer.js";
 import albumView from "./albumView.js";
 import addAlbum from "./addAlbum.js";
+import songView from "./songView.js";
 const container = document.querySelector(".container");
 
 // function makeHomeView() {
@@ -118,7 +119,7 @@ function makeAddAlbumView(){
             makeHomeViewFromJSON(album)
         })
     })
-
+  
     const backButton = document.querySelector(".back-navigation");
     backButton.addEventListener("click",()=>{
         makeHomeView();
@@ -135,6 +136,7 @@ function makeAlbumView(album) {
         console.log(songElement)
 
         songElement.forEach(song=>{
+
             let songElId = song.querySelector(".id_field");
 
             const editButton = song.querySelector(".edit-button");
@@ -161,6 +163,16 @@ function makeAlbumView(album) {
                     makeAlbumView(album);
                 })
             });
+
+            const songElTitle = song.querySelector(".song-title");
+            songElTitle.addEventListener("click", ()=> {
+                fetch(`http://localhost:8080/api/songs/${songElId.value}`)
+                .then(res => res.json())
+                .then(oneSongJson => {
+                    makeSongView(oneSongJson,album)
+                })
+                .catch(err=> console.error(err))
+            })
         }) 
 
         const backButton = document.querySelector(".back-navigation");
@@ -219,9 +231,49 @@ function makeAlbumView(album) {
 
 }
 
+function makeSongView(song,album){
+    container.innerHTML = header();
+    container.innerHTML+=songView(song);
+    container.innerHTML+=footer();
+
+    const userNameIn = container.querySelector(".userNameInput");
+    const commentIn = container.querySelector(".commentInput");
+    const addCommentButton = container.querySelector(".addCommentButton");
+    let songElId = container.querySelector(".id_field");
+    addCommentButton.addEventListener("click",()=>{
+
+        const newSongCommentJson = {
+            "userName": userNameIn.value,
+            "comment": commentIn.value,
+        }
+        fetch(`http://localhost:8080/api/songs/${songElId.value}/addComment`,{
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newSongCommentJson)
+        })
+        .then(res => res.json())
+        .then(song => {
+            makeSongView(song,album);
+        })
+        .catch(err => console.error(err))
+    })
+
+    const backButton = document.querySelector(".back-navigation");
+    backButton.addEventListener("click",()=>{
+        makeHomeView();
+    })
+    const backSongButton = document.querySelector(".back-navigation-toSong");
+    backSongButton.addEventListener("click",()=>{
+        makeAlbumView(album);
+    })
+}
+
+
 makeHomeView();
-fetch("http://localhost:8080/api/albums/1")
-.then(res => res.json())
-.then(album => {
-    console.log(album.songs[0].ratings);
-})
+// fetch("http://localhost:8080/api/albums/1")
+// .then(res => res.json())
+// .then(album => {
+//     console.log(album.songs[0].ratings);
+// })

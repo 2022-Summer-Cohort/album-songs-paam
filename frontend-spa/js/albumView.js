@@ -16,7 +16,6 @@ export default function albumView(album) {
                                     <button class="delete-button">Delete</button>
                                     <button class="edit-button">Edit</button>
                                     <input type="text" class="update-songName" placeholder="New Song Name">                
-
                                     </div>    
                             `
     }).join("")
@@ -51,6 +50,7 @@ export default function albumView(album) {
                 </div>
 
                 <a class="back-navigation">back to album listings</a>
+                
             </section>
         </main>            
     `
