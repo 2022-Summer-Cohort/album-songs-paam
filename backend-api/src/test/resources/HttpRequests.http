@@ -1,0 +1,47 @@
+### Get all albums
+
+GET http://localhost:8080/api/albums
+Accept: application/json
+
+### Get an album with the given id;
+
+GET http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Delete an album with the given id.
+
+DELETE http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Post a new album resource.
+
+POST http://localhost:8080/api/albums
+Content-Type: application/json
+
+{"Title": "The White Album", "recordLabel": "Apple Records"}
+
+### Update an album resource.
+
+PUT http://http://localhost:8080/api/albums
+Content-Type: application/json
+
+{"id":1,"title": "Legends never Die","imgUrl": "https://i.discogs.com/O7_-5er5eB0InrMFdHS2Ew6aBMAvnKAMG4f-7uvVrPA/rs:fit/g:sm/q:90/h:599/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2MTU1/NDY3LTE2MDkxOTEz/NTUtMTk0OC5qcGVn.jpeg","recordLabel": "idkLabel"}
+
+### Update an album's title property.
+PATCH http://localhost:8080/api/campuses/1/title
+
+Legends never Die
+
+### Add a new song resource to the album's songs
+PATCH http://localhost:8080/api/albums/1/songs
+Content-Type: application/json
+
+{"title": "Self Made","link": "https://open.spotify.com/track/3Uvi9diL18dYSUc3vcKk0n?si=c8b2e1d72d1f4d4d","duration": "3:01","comment": "shkdjfysahgdufija bsdf","ratings": "2","Album:" "Jworld"}
+
+### Changes album techstack
+PATCH http://localhost:8080/api/albums/1
+Content-Type: application/json
+
+### Delete an album with the given id.
+DELETE http://localhost:8080/api/albums/1
+Content-Type: application/json
